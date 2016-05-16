@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- view -->
+    <div id="app">
+      <h1>{{ message }}</h1>
+
+      <!-- input with directive
+      v-model creates a binding for, in this case, the input's value
+      to a data property. It's two-way bound, though, so if we fire up
+      the page and change the input value, the changes will propagate to
+      the h1 above that is also bound to message -->
+      <input v-model="message" />
+
+      <!-- within pre tags, can use custom property $data, refers to model,
+      or data object, for this vue instance, then can filter with | json -->
+      <pre>
+        {{ $data | json }}
+      </pre>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js" type="text/javascript"></script>
+
+    <script>
+    // model outside viewmodel
+    var data = {
+      message: 'Hello World'
+    };
+
+    // viewmodel binds to view and to model
+    new Vue({
+      el: "#app",
+      // model inside viewmodel
+      data: {
+        message: 'Hello World'
+      }
+    });
+    </script>
+
+  </body>
+
+
+</html>

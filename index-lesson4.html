@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Document</title>
+  <link href="css/lesson2.css" rel="stylesheet" />
+</head>
+<body>
+  <!-- view -->
+  <div id="app">
+      <!-- just like above, v-show is setting the display property of the
+      button - if message has a value, show the button. -->
+      <!-- <button type="submit" @click="count++">
+        Likes: {{ count }}
+      </button>
+
+      <button type="submit" @click="count++">
+        Dislikes: {{ count }}
+      </button> -->
+      <counter subject="Likes"></counter>
+      <counter subject="Dislikes"></counter>
+
+
+  </div>
+  <!-- template for component -->
+  <template id="counter-template">
+    <!-- reference the prop that we defined in our template -->
+    <h1>{{ subject }}</h1>
+    <button @click="count++">
+      {{ count }}
+    </button>
+  </template>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js" type="text/javascript"></script>
+
+  <script>
+
+  // define a global component, reusable functionality that we can create
+  // via an html tag
+  Vue.component('counter', {
+    template: '#counter-template',
+    // specify that we can pass in a subject property and use that just like any other
+    // data bound piece of data
+    props: ['subject'],
+    // CAN'T DO THIS \/
+    // data: { count: 0 }
+    // we don't want the components to all use the same data,
+    // so we can return a function here. This makes the data unique to
+    // each component
+    data: function() {
+      return { count: 0 };
+    }
+  });
+
+  // viewmodel binds to view and to model
+  new Vue({
+    el: "#app",
+
+    // // NON-GLOBAL COMPONENT SYNTAX
+    // components: {
+    //   counter: {
+    //     template: '#counter-template',
+    //     // specify that we can pass in a subject property and use that just like any other
+    //     // data bound piece of data
+    //     props: ['subject'],
+    //     // CAN'T DO THIS \/
+    //     // data: { count: 0 }
+    //     // we don't want the components to all use the same data,
+    //     // so we can return a function here. This makes the data unique to
+    //     // each component
+    //     data: function() {
+    //       return { count: 0 };
+    //     }
+    //   }
+    // }
+  });
+  </script>
+</body>
+
+
+</html>

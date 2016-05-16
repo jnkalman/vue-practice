@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Document</title>
+  <link href="css/lesson2.css" rel="stylesheet" />
+</head>
+<body>
+  <!-- view -->
+  <div id="app">
+    <form>
+      <!-- v-show sets the display property of a component conditionally,
+      in this case, if message has a value, don't show the error message.
+      Any basic expression can be used inside the v-show directive.
+
+      The difference between v-show and v-if: if conditionally loads
+      something based upon your expression, whereas show just toggles
+      the display. For example, while v-show changes the display property to
+      block or none, v-if will completely remove the element from the page.
+      If you just want to toggle the display of something, v-show is what you
+      want to use. -->
+      <span v-show="!message" class="error">
+        You must enter a message
+      </span>
+      <br />
+
+
+      <!-- input with directive
+      v-model creates a binding for, in this case, the input's value
+      to a data property. It's two-way bound, though, so if we fire up
+      the page and change the input value, the changes will propagate to
+      the h1 above that is also bound to message -->
+      <textarea v-model="message"></textarea>
+      <br  />
+
+      <!-- just like above, v-show is setting the display property of the
+      button - if message has a value, show the button. -->
+      <button v-show="message" type="submit">
+        Send Message
+      </button>
+    </form>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js" type="text/javascript"></script>
+
+  <script>
+  // model outside viewmodel
+  var data = {
+    message: ''
+  };
+
+  // viewmodel binds to view and to model
+  new Vue({
+    el: "#app",
+    // model inside viewmodel
+    data: {
+      message: ''  // declare regardless if it has a value
+    }
+  });
+  </script>
+
+</body>
+
+
+</html>

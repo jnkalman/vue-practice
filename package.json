@@ -1,0 +1,22 @@
+{
+  "name": "vue-practice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jnkalman/vue-practice.git"
+  },
+  "author": "Jake Kalman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jnkalman/vue-practice/issues"
+  },
+  "devDependencies": {
+    "http-server": "^0.9.0"
+  }
+}

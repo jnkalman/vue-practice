@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Document</title>
+  <link href="css/lesson2.css" rel="stylesheet" />
+</head>
+<body>
+  <!-- view -->
+  <div id="app">
+    <!-- prevent is an event modifier. Instead of using e.preventDefault();, this
+    does it for us. v-on is the same as @, so we can use @ for shorthand. -->
+    <form action="done.html" @submit.prevent="handleIt">
+
+      <!-- just like above, v-show is setting the display property of the
+      button - if message has a value, show the button. -->
+      <button type="submit">
+        Submit Me!
+      </button>
+    </form>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js" type="text/javascript"></script>
+
+  <script>
+  // viewmodel binds to view and to model
+  new Vue({
+    el: "#app",
+    methods: {
+      handleIt: function() {
+        alert('handled');
+      }
+    }
+  });
+  </script>
+
+</body>
+
+
+</html>
