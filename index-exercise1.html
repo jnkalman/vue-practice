@@ -7,7 +7,7 @@
 </head>
 <body>
   <!-- view -->
-  <div id="app">
+  <div id="app" v-cloak>
     <div v-for="plan in plans">
       <plan :plan="plan" :active.sync="active"></plan>
     </div>
