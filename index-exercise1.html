@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Document</title>
+  <link href="css/lesson6.css" rel="stylesheet" />
+</head>
+<body>
+  <!-- view -->
+  <div id="app">
+    <div v-for="plan in plans">
+      <plan :plan="plan" :active.sync="active"></plan>
+    </div>
+
+  </div>
+
+  <template id="plan-template" >
+    <span class="plan-name">
+      {{ plan.name }}
+    </span>
+
+    <span class="plan-price">
+      {{ plan.price }}/month
+    </span>
+
+    <button type="button" @click="selectActivePlan" v-show="plan.name != active.name">{{ isUpgrade ? 'Upgrade' : 'Downgrade' }}</button>
+
+    <span v-else>Current Plan</span>
+  </template>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.js" type="text/javascript"></script>
+
+  <script>
+
+  // viewmodel binds to view and to model
+  new Vue({
+    el: "#app",
+    data: {
+      active: {
+        name: '',
+        price: -1
+      },
+      plans: [
+        {name: 'Enterprise', price: 100},
+        {name: 'Pro', price: 50},
+        {name: 'Personal', price: 10},
+        {name: 'Free', price: 0}
+      ]
+
+    },
+    components: {
+      plan: {
+        template: '#plan-template',
+        props: ['plan', 'active'],
+
+        data: function() {
+          return this.plan;
+        },
+
+        methods: {
+          selectActivePlan: function() {
+            this.active = this.plan;
+          }
+        },
+        computed: {
+            isUpgrade: function() {
+              return this.plan.price > this.active.price;
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+
+</html>
