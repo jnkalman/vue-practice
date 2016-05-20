@@ -1,0 +1,24 @@
+.Alert {
+  position: relative;
+  background: #ddd;
+  border: 1px solid darken(#ddd, 10%);
+  padding: 1em;
+}
+
+.success {
+  background: #0f0;
+  border: 1px solid;
+}
+
+.close {
+  position:absolute;
+  top:1em;
+  right:1em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.error {
+  background: #f00;
+  border: 1px solid;
+}
